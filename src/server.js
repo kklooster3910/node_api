@@ -16,13 +16,17 @@ app.use(json()) // req.body on request
 app.use(urlencoded({ extended: true })) // query string ?userId=32352345 accessible on req
 app.use(morgan('dev')) // server log with time of request
 
-// app routes
+// api routes
 app.use(userRouter)
 
-const start = () => {
-  app.listen(3000, () => {
-    console.log('server running on 3000')
-  })
+const start = async () => {
+  try {
+    app.listen(3000, () => {
+      console.log('server running on 3000')
+    })
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 module.exports = {
